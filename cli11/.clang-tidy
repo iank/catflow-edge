@@ -1,0 +1,5 @@
+# Disable all checks in this directory. Hack misc-definitions-in-headers to avoid
+# 'no checks enabled' error
+Checks: '-*,misc-definitions-in-headers'
+CheckOptions:
+  - { key: HeaderFileExtensions,    value: "x"}

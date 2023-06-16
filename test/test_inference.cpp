@@ -27,8 +27,8 @@ int main(int argc, char **argv)
 
     CLI11_PARSE(app, argc, argv);
 
-    constexpr unsigned int YOLOV5M_N_CLASSES = 80;
-    constexpr unsigned int YOLOV5M_CONFIDENCE = 0.5;
+    constexpr unsigned int yolov5m_n_classes = 80;
+    constexpr unsigned int yolov5m_confidence = 0.5;
 
     // Load model
     cv::dnn::Net net;
@@ -40,7 +40,7 @@ int main(int argc, char **argv)
 
     // Detect
     std::vector<Detection> output;
-    detect(frame, net, output, YOLOV5M_N_CLASSES, YOLOV5M_CONFIDENCE);
+    detect(frame, net, output, yolov5m_n_classes, yolov5m_confidence);
 
     TEST(output.size() == 1, "Detect one object");
     TEST(output[0].class_id == 2, "Detected a car");

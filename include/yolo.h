@@ -16,8 +16,4 @@ struct Detection
 void detect(cv::Mat &image, cv::dnn::Net &net, std::vector<Detection> &output,
             const unsigned int n_classes, float confidence_threshold);
 
-const std::vector<cv::Scalar> colors = {
-    cv::Scalar(255, 255, 0), cv::Scalar(0, 255, 0), cv::Scalar(0, 255, 255),
-    cv::Scalar(255, 0, 0)};
-
 #endif

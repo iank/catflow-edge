@@ -6,6 +6,10 @@
 #include "CLI11.hpp"
 #include "yolo.h"
 
+const std::vector<cv::Scalar> CLASS_COLORS = {
+    cv::Scalar(255, 255, 0), cv::Scalar(0, 255, 0), cv::Scalar(0, 255, 255),
+    cv::Scalar(255, 0, 0)};
+
 int main(int argc, char **argv)
 {
     CLI::App app{"Run YOLOv5 inference on a video"};
@@ -83,14 +87,14 @@ int main(int argc, char **argv)
         {
             auto detection = output[i];
             auto box = detection.box;
-            auto classId = detection.class_id;
-            const auto color = colors[classId % colors.size()];
+            auto class_id = detection.class_id;
+            const auto color = CLASS_COLORS[class_id % CLASS_COLORS.size()];
             cv::rectangle(frame, box, color, 3);
 
             cv::rectangle(frame, cv::Point(box.x, box.y - 20),
                           cv::Point(box.x + box.width, box.y), color,
                           cv::FILLED);
-            cv::putText(frame, class_list[classId].c_str(),
+            cv::putText(frame, class_list[class_id].c_str(),
                         cv::Point(box.x, box.y - 5), cv::FONT_HERSHEY_SIMPLEX,
                         0.5, cv::Scalar(0, 0, 0));
         }

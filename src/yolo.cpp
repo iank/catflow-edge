@@ -32,8 +32,8 @@ cv::Mat format_yolov5(const cv::Mat &source)
 {
     int col = source.cols;
     int row = source.rows;
-    int _max = MAX(col, row);
-    cv::Mat result = cv::Mat::zeros(_max, _max, CV_8UC3);
+    int max_dim = MAX(col, row);
+    cv::Mat result = cv::Mat::zeros(max_dim, max_dim, CV_8UC3);
     source.copyTo(result(cv::Rect(0, 0, col, row)));
     return result;
 }
