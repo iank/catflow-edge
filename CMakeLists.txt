@@ -7,6 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
+include_directories(${PROJECT_SOURCE_DIR}/cli11/)
 include_directories( ${OpenCV_INCLUDE_DIRS} )
 
 # Library
@@ -25,4 +26,4 @@ set(TEST_MODEL "${PROJECT_SOURCE_DIR}/test/yolov5m.onnx")
 add_executable(catflow-edge-test "${PROJECT_SOURCE_DIR}/test/test_inference.cpp")
 target_link_libraries(catflow-edge-test libcatflow ${OpenCV_LIBS})
 
-add_test(NAME test_inference COMMAND catflow-edge-test ${TEST_VECTOR} ${TEST_MODEL})
+add_test(NAME test_inference COMMAND catflow-edge-test ${TEST_MODEL} ${TEST_VECTOR})

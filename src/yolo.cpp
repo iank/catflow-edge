@@ -27,7 +27,6 @@ const float INPUT_WIDTH = 640.0;
 const float INPUT_HEIGHT = 640.0;
 const float SCORE_THRESHOLD = 0.2;
 const float NMS_THRESHOLD = 0.4;
-const float CONFIDENCE_THRESHOLD = 0.682;
 
 cv::Mat format_yolov5(const cv::Mat &source)
 {
@@ -40,7 +39,7 @@ cv::Mat format_yolov5(const cv::Mat &source)
 }
 
 void detect(cv::Mat &image, cv::dnn::Net &net, std::vector<Detection> &output,
-            const unsigned int n_classes)
+            const unsigned int n_classes, const float confidence_threshold)
 {
     cv::Mat blob;
 
@@ -68,7 +67,7 @@ void detect(cv::Mat &image, cv::dnn::Net &net, std::vector<Detection> &output,
     for (int i = 0; i < rows; i++)
     {
         float confidence = data[4];
-        if (confidence >= CONFIDENCE_THRESHOLD)
+        if (confidence >= confidence_threshold)
         {
 
             float *classes_scores = data + 5;
