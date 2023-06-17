@@ -50,7 +50,9 @@ cmake -DCMAKE_TOOLCHAIN_FILE=platforms/linux/arm-gnueabi.toolchain.cmake \
 
 ### catflow-edge
 
-```cmake -DOPENCV_DIR=../prefix/ -DCMAKE_TOOLCHAIN_FILE=cmake/arm-toolchain.cmake ..`
+```
+cmake -DOPENCV_DIR=../../prefix/ -DCMAKE_TOOLCHAIN_FILE=cmake/arm-toolchain.cmake ..
+```
 
 ## Attribution
 
