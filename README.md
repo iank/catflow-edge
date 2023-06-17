@@ -25,6 +25,31 @@ make
 ARGS=--output-on-failure make test
 ```
 
+## Cross-compilation
+
+### OpenCV
+
+[OpenCV instructions](https://docs.opencv.org/4.x/d0/d76/tutorial_arm_crosscompile_with_cmake.html).
+
+For example:
+
+```
+cmake -DCMAKE_TOOLCHAIN_FILE=platforms/linux/arm-gnueabi.toolchain.cmake \
+    -DCMAKE_BUILD_TYPE=RELEASE \
+    -DCMAKE_INSTALL_PREFIX=$(pwd)/../../prefix/usr/local \
+    -DINSTALL_C_EXAMPLES=OFF \
+    -DINSTALL_PYTHON_EXAMPLES=OFF \
+    -DOPENCV_GENERATE_PKGCONFIG=ON \
+    -DBUILD_EXAMPLES=OFF \
+    -DBUILD_opencv_calib3d=OFF \
+    -DCMAKE_SHARED_LINKER_FLAGS='-latomic'
+    ..
+```
+
+### catflow-edge
+
+```cmake -DOPENCV_DIR=../prefix/ -DCMAKE_TOOLCHAIN_FILE=cmake/arm-toolchain.cmake ..`
+
 ## Attribution
 
 Derived from https://github.com/doleron/yolov5-opencv-cpp-python/

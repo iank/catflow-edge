@@ -3,7 +3,13 @@ project(catflow-edge)
 
 include(cmake/clang-tidy.cmake)
 
-find_package(OpenCV REQUIRED)
+option(OPENCV_DIR "OpenCV location (use for cross-compilation)")
+if (OPENCV_DIR)
+    message("OPENCV_DIR: ${OPENCV_DIR}")
+    find_package(OpenCV REQUIRED PATHS ${OPENCV_DIR} NO_DEFAULT_PATH)
+else()
+    find_package(OpenCV REQUIRED)
+endif()
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
