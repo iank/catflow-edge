@@ -1,6 +1,8 @@
 # catflow-edge
 
-YOLOv5 inference in C++ using ONNX
+YOLOv5 inference in C++ using ONNX.
+
+I created this to test performance of CPU inference on a potential target platform and am setting it down for now.
 
 ## Set-up
 
@@ -52,4 +54,4 @@ cmake -DCMAKE_TOOLCHAIN_FILE=platforms/linux/arm-gnueabi.toolchain.cmake \
 
 ## Attribution
 
-Derived from https://github.com/doleron/yolov5-opencv-cpp-python/
+This is a cleaned up and packaged version of code derived from https://github.com/doleron/yolov5-opencv-cpp-python/
