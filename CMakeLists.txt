@@ -32,7 +32,7 @@ enable_clang_tidy(catflow-edge)
 enable_testing()
 
 set(TEST_VECTOR "${PROJECT_SOURCE_DIR}/test/wikipedia_cc_640x480.png")
-set(TEST_MODEL "${PROJECT_SOURCE_DIR}/test/yolov5m.onnx")
+set(TEST_MODEL "${PROJECT_SOURCE_DIR}/test/yolov5n.onnx")
 
 add_executable(catflow-edge-test "${PROJECT_SOURCE_DIR}/test/test_inference.cpp")
 target_link_libraries(catflow-edge-test libcatflow ${OpenCV_LIBS})
